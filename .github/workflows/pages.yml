@@ -30,14 +30,17 @@ jobs:
           mkdir -p _site/app
           cat parts/part*.txt > /tmp/packed.html
           python3 <<'PY'
-          import base64, gzip, json, pathlib, re
+          import base64, gzip, json, pathlib
 
           packed = pathlib.Path('/tmp/packed.html').read_text(encoding='utf-8')
-          match = re.search(r'const P=(\{.*?\});\s*async function gunzip64', packed, re.S)
-          if not match:
-              raise SystemExit('Could not find packed prototype payload')
+          marker = 'const P='
+          start = packed.index(marker) + len(marker)
+          try:
+              end = packed.index(';\nasync function gunzip64', start)
+          except ValueError:
+              end = packed.index(';async function gunzip64', start)
+          payload = json.loads(packed[start:end].strip())
 
-          payload = json.loads(match.group(1))
           out = pathlib.Path('_site/app')
           out.mkdir(parents=True, exist_ok=True)
           for name, encoded in payload.items():
