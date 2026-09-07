@@ -1,32 +1,45 @@
 (()=>{
-  const replaceDomains=()=>{
-    document.querySelectorAll('body *').forEach(el=>{
-      if(el.children.length===0 && el.textContent && el.textContent.includes('collaborative-order.local')){
-        el.textContent=el.textContent.replaceAll('collaborative-order.local','customerscanvas.com');
+  const OLD='collaborative-order.local';
+  const NEW='customerscanvas.com';
+
+  function replaceTextNodes(root){
+    if(!root) return;
+    if(root.nodeType===Node.TEXT_NODE){
+      if(root.data && root.data.includes(OLD)) root.data=root.data.replaceAll(OLD,NEW);
+      return;
+    }
+    if(root.nodeType!==Node.ELEMENT_NODE && root.nodeType!==Node.DOCUMENT_FRAGMENT_NODE) return;
+    const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);
+    let node;
+    while((node=walker.nextNode())){
+      if(node.data && node.data.includes(OLD)) node.data=node.data.replaceAll(OLD,NEW);
+    }
+  }
+
+  let chatScrollScheduled=false;
+  function pinChats(){
+    if(chatScrollScheduled) return;
+    chatScrollScheduled=true;
+    requestAnimationFrame(()=>{
+      chatScrollScheduled=false;
+      ['designerThread','prepressThread','directorThread'].forEach(id=>{
+        const el=document.getElementById(id);
+        if(el) el.scrollTop=el.scrollHeight;
+      });
+    });
+  }
+
+  function observe(){
+    const observer=new MutationObserver(records=>{
+      for(const record of records){
+        for(const node of record.addedNodes) replaceTextNodes(node);
       }
-    });
-    const tab=document.querySelector('.browser-tab');
-    const address=document.querySelector('.browser-bar .address');
-    if(tab) tab.childNodes[tab.childNodes.length-1].textContent='Customer’s Canvas';
-    if(address) address.textContent='🔒 customerscanvas.com';
-  };
-
-  const pinChats=()=>{
-    ['designerThread','prepressThread','directorThread'].forEach(id=>{
-      const el=document.getElementById(id);
-      if(el) el.scrollTop=el.scrollHeight;
-    });
-  };
-
-  const observe=()=>{
-    const observer=new MutationObserver(()=>{
-      replaceDomains();
       pinChats();
     });
-    observer.observe(document.body,{subtree:true,childList:true,characterData:true});
-  };
+    observer.observe(document.body,{subtree:true,childList:true});
+  }
 
-  const wireAction=()=>{
+  function wireAction(){
     const action=document.getElementById('action');
     if(!action) return;
     action.addEventListener('click',()=>{
@@ -34,9 +47,9 @@
       document.getElementById('restart')?.click();
       setTimeout(()=>document.getElementById('play')?.click(),1000);
     });
-  };
+  }
 
-  replaceDomains();
+  replaceTextNodes(document.body);
   pinChats();
   observe();
   wireAction();
