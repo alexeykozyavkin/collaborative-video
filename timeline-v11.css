@@ -1,0 +1,13 @@
+/* v11: recording UX polish */
+#controls #action{border:1px solid #7c3aed;background:#8b5cf6;color:#fff;border-radius:8px;padding:10px 14px;font-weight:700;cursor:pointer}
+.desktop-icon{background:rgba(255,255,255,.32)!important;border:1px solid rgba(17,24,39,.06)!important;box-shadow:0 8px 20px rgba(15,23,42,.08)!important}
+.desktop-icon b{color:#374151!important;text-shadow:none!important;font-weight:700!important;opacity:1!important}
+.browser-bar .browser-tab,.browser-bar .address{font-size:15px!important}
+.v10-layout .order-assets>div{grid-template-columns:26px minmax(0,1fr) auto!important;gap:12px!important;padding:10px 0!important}
+.v10-layout .order-assets .asset-ico,.asset-ico{display:inline-flex!important;align-items:center!important;justify-content:center!important;width:26px!important;height:26px!important;min-width:26px!important;border-radius:6px!important;font-size:10px!important;font-weight:800!important;line-height:1!important;padding:0!important}
+.v10-layout .order-assets b{font-size:15px!important;line-height:1.25!important}.v10-layout .order-assets small{font-size:13px!important}
+.staff-chat .staff-chat-body{display:grid!important;grid-template-rows:auto 1fr auto!important;height:calc(100% - 44px)!important;min-height:0!important}
+.staff-chat .staff-thread{min-height:0!important;overflow:auto!important;padding:14px 14px 10px!important;display:flex!important;flex-direction:column!important;justify-content:flex-end!important;gap:10px!important;scrollbar-width:none}
+.staff-chat .staff-thread::-webkit-scrollbar{display:none}.staff-chat .staff-chat-input{margin:0 14px 14px!important}.staff-chat .staff-msg{max-width:100%!important}
+#clickRing.go{filter:drop-shadow(0 0 6px rgba(37,99,235,.4))}.file-row.selected{background:#eaf2ff!important;outline:1px solid #c3d8ff!important}
+.recording #controls{display:none!important}
