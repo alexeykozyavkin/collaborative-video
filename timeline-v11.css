@@ -1,13 +1,30 @@
 /* v11: recording UX polish */
 #controls #action{border:1px solid #7c3aed;background:#8b5cf6;color:#fff;border-radius:8px;padding:10px 14px;font-weight:700;cursor:pointer}
-.desktop-icon{background:rgba(255,255,255,.32)!important;border:1px solid rgba(17,24,39,.06)!important;box-shadow:0 8px 20px rgba(15,23,42,.08)!important}
-.desktop-icon b{color:#374151!important;text-shadow:none!important;font-weight:700!important;opacity:1!important}
+
+/* Desktop icons must stay readable on the pale Windows-style wallpaper. */
+.desktop-icon{color:#344054!important;text-shadow:none!important}
+.desktop-icon b{color:#344054!important;text-shadow:none!important;font-weight:700!important;opacity:1!important}
+.desktop-glyph{background:rgba(255,255,255,.78)!important;border:1px solid rgba(52,64,84,.10)!important;box-shadow:0 8px 20px rgba(15,23,42,.10)!important}
+.desktop-glyph.recycle{color:#475467!important;font-weight:700!important;text-shadow:none!important}
+.desktop-glyph.folder:before{filter:saturate(.92) contrast(1.04)}
+
 .browser-bar .browser-tab,.browser-bar .address{font-size:15px!important}
-.v10-layout .order-assets>div{grid-template-columns:26px minmax(0,1fr) auto!important;gap:12px!important;padding:10px 0!important}
-.v10-layout .order-assets .asset-ico,.asset-ico{display:inline-flex!important;align-items:center!important;justify-content:center!important;width:26px!important;height:26px!important;min-width:26px!important;border-radius:6px!important;font-size:10px!important;font-weight:800!important;line-height:1!important;padding:0!important}
-.v10-layout .order-assets b{font-size:15px!important;line-height:1.25!important}.v10-layout .order-assets small{font-size:13px!important}
-.staff-chat .staff-chat-body{display:grid!important;grid-template-rows:auto 1fr auto!important;height:calc(100% - 44px)!important;min-height:0!important}
-.staff-chat .staff-thread{min-height:0!important;overflow:auto!important;padding:14px 14px 10px!important;display:flex!important;flex-direction:column!important;justify-content:flex-end!important;gap:10px!important;scrollbar-width:none}
-.staff-chat .staff-thread::-webkit-scrollbar{display:none}.staff-chat .staff-chat-input{margin:0 14px 14px!important}.staff-chat .staff-msg{max-width:100%!important}
+
+/* Customer source assets. The PDF icon also carries class .pdf, which is used by the
+   desktop PDF window, so explicitly neutralize all window sizing here. */
+.v10-layout .order-assets>div{grid-template-columns:28px minmax(0,1fr) auto!important;gap:12px!important;padding:10px 0!important;align-items:center!important}
+.v10-layout .order-assets .asset-ico{display:inline-flex!important;position:static!important;left:auto!important;top:auto!important;right:auto!important;bottom:auto!important;width:28px!important;height:28px!important;min-width:28px!important;min-height:28px!important;max-width:28px!important;max-height:28px!important;border-radius:6px!important;font-size:9px!important;font-weight:800!important;line-height:1!important;padding:0!important;box-shadow:none!important}
+.v10-layout .order-assets .asset-ico.pdf{background:#e54848!important;color:#fff!important}
+.v10-layout .order-assets .asset-ico.png{background:#2f70df!important;color:#fff!important}
+.v10-layout .order-assets b{font-size:14px!important;line-height:1.25!important}.v10-layout .order-assets small{font-size:13px!important}
+
+/* Chat windows: reserve a real row for the input and scroll the conversation itself. */
+.staff-chat .staff-chat-body{display:grid!important;grid-template-rows:auto minmax(0,1fr) auto!important;height:calc(100% - 48px)!important;min-height:0!important;overflow:hidden!important}
+.staff-chat .staff-thread{min-height:0!important;overflow-y:auto!important;overflow-x:hidden!important;padding:12px 14px 10px!important;display:flex!important;flex-direction:column!important;justify-content:flex-start!important;gap:9px!important;scrollbar-width:none!important}
+.staff-chat .staff-thread::-webkit-scrollbar{display:none!important}
+.staff-chat .staff-chat-input{position:relative!important;z-index:2!important;margin:0 12px 12px!important;flex:none!important;background:#fff!important}
+.staff-chat .staff-msg{flex:none!important;max-width:100%!important}
+.staff-chat .staff-msg>div{max-width:88%!important}
+
 #clickRing.go{filter:drop-shadow(0 0 6px rgba(37,99,235,.4))}.file-row.selected{background:#eaf2ff!important;outline:1px solid #c3d8ff!important}
 .recording #controls{display:none!important}
