@@ -1,0 +1,89 @@
+/* v6 cinematic overrides: keep the fixed 1920x1080 stage, only refine the look. */
+
+html,body,#viewport,#stage{background:#dbe3ec}
+.wallpaper{
+  background:
+    radial-gradient(900px 620px at 13% 10%,rgba(255,255,255,.96),rgba(255,255,255,.35) 46%,transparent 70%),
+    radial-gradient(820px 560px at 86% 18%,rgba(222,234,247,.9),transparent 70%),
+    linear-gradient(132deg,#edf2f7 0%,#dbe4ee 35%,#c7d4e2 67%,#afc0d3 100%);
+}
+.wallpaper:before{
+  width:1500px;height:1500px;right:-300px;top:-620px;
+  border:0;
+  background:linear-gradient(145deg,rgba(255,255,255,.56),rgba(255,255,255,.08));
+  border-radius:42% 58% 52% 48%;
+  transform:rotate(-13deg);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.32),0 50px 120px rgba(69,91,119,.08);
+}
+.wallpaper:after{
+  width:1900px;height:850px;right:-520px;top:430px;
+  border:0;
+  border-radius:50%;
+  background:linear-gradient(180deg,rgba(245,249,253,.64),rgba(162,183,206,.12));
+  transform:rotate(-13deg);
+  filter:blur(.2px);
+}
+
+/* Make the overload feel intentional: dense but still legible. */
+.window{box-shadow:0 26px 58px rgba(24,39,60,.24),0 4px 13px rgba(24,39,60,.09)}
+.outlook{left:72px;top:68px;width:1210px;height:696px}
+.teams{left:1294px;top:122px;width:566px;height:607px}
+.explorer{left:132px;top:652px;width:955px;height:326px}
+.pdf{left:916px;top:446px;width:542px;height:440px}
+.pdf.second{left:1086px;top:498px;width:536px;height:430px}
+.qa{left:1425px;top:692px;width:400px;height:272px}
+.production{left:52px;top:782px;width:438px;height:204px}
+
+/* Extra notifications used only while chaos is building. */
+.chaos-ping{
+  position:absolute;z-index:640;width:390px;padding:14px 16px;
+  border:1px solid rgba(203,213,225,.96);border-radius:12px;background:rgba(255,255,255,.98);
+  box-shadow:0 18px 46px rgba(15,23,42,.22);opacity:0;transform:translateY(15px) scale(.98);
+  transition:opacity .22s ease,transform .38s cubic-bezier(.2,.8,.2,1);
+}
+.chaos-ping.show{opacity:1;transform:none}
+.chaos-ping b{display:block;font-size:15px;margin-bottom:4px;color:#182230}
+.chaos-ping span{display:block;font-size:16px;line-height:1.3;color:#475467}
+.chaos-ping.mail{border-left:5px solid #1976d2}.chaos-ping.teams{border-left:5px solid #5b5fc7}.chaos-ping.warn{border-left:5px solid #f59e0b}
+
+/* A real visual beat before rewind: the frame holds and tightens slightly. */
+#stage.climax-hold #windows{filter:contrast(1.025) saturate(.92)}
+#stage.climax-hold:after{
+  content:"";position:absolute;inset:0;z-index:645;pointer-events:none;
+  box-shadow:inset 0 0 170px rgba(26,38,56,.16);opacity:1;
+}
+
+/* Stronger tape/film rewind treatment. */
+#rewindFilm{background:rgba(5,10,18,.13);backdrop-filter:grayscale(.45) contrast(1.08)}
+#rewindFilm.on{opacity:1;animation:rewindFlicker .11s steps(2,end) infinite}
+#rewindFilm .film-lines{opacity:.8;background:repeating-linear-gradient(174deg,transparent 0 12px,rgba(255,255,255,.24) 13px 15px,transparent 16px 38px);animation:filmSweep .14s linear infinite}
+#rewindFilm .scrub{height:160px;background:linear-gradient(180deg,transparent,rgba(255,255,255,.16),rgba(255,255,255,.62),rgba(255,255,255,.1),transparent);filter:blur(5px);animation:scrubFast .2s steps(2,end) infinite}
+#rewindFilm .sprocket{width:46px;opacity:.72;background:repeating-linear-gradient(to bottom,#0d1118 0 21px,#f4f4f2 21px 37px,#0d1118 37px 59px)}
+#rewindFilm .rewind-symbol{font-size:54px;right:82px;top:66px;letter-spacing:-13px;text-shadow:0 3px 12px rgba(0,0,0,.45)}
+#stage.rewinding #windows{animation:rewindJitter .09s steps(2,end) infinite;filter:saturate(.55) contrast(1.16) brightness(1.05)}
+#stage.rewinding .wallpaper{filter:saturate(.65) contrast(1.05)}
+@keyframes filmSweep{from{transform:translate3d(8%,0,0)}to{transform:translate3d(-8%,0,0)}}
+@keyframes scrubFast{0%{transform:translateY(-320px)}50%{transform:translateY(230px)}100%{transform:translateY(-80px)}}
+@keyframes rewindJitter{0%{translate:-9px 0}50%{translate:8px 0}100%{translate:-4px 0}}
+@keyframes rewindFlicker{0%{background:rgba(5,10,18,.08)}50%{background:rgba(255,255,255,.11)}100%{background:rgba(5,10,18,.16)}}
+
+/* Product branch: calm, structured, deliberately lower visual density. */
+.portal-layout.wizard-layout{display:block;height:calc(100% - 60px);padding:34px 110px;background:#f5f7f9;overflow:hidden}
+.portal-wizard{max-width:1180px;margin:0 auto}
+.wizard-title{font-size:32px;margin:0 0 22px;color:#152033}
+.wizard-steps{display:grid;grid-template-columns:repeat(4,1fr);background:#fff;border:1px solid #e0e5eb;border-radius:7px;overflow:hidden;box-shadow:0 2px 8px rgba(20,34,51,.05)}
+.wizard-step{padding:16px 18px;border-right:1px solid #edf0f4;color:#98a2b3;font-size:14px}.wizard-step:last-child{border-right:0}
+.wizard-step b{display:block;font-size:16px;color:#667085;margin-bottom:3px}.wizard-step.active{border-bottom:3px solid #1295ea;background:#fbfdff}.wizard-step.active b{color:#111827}.wizard-step.done b{color:#344054}
+.wizard-card{display:grid;grid-template-columns:1fr 255px;gap:26px;margin-top:22px;background:#fff;border:1px solid #e0e5eb;border-radius:8px;padding:24px;box-shadow:0 2px 9px rgba(20,34,51,.04)}
+.wizard-main h2{margin:0 0 10px;font-size:22px}.wizard-main p{color:#667085;margin:0 0 15px}
+.customer-row{display:flex;align-items:center;gap:14px;border:1px solid #b9dcf5;background:#eef9ff;border-radius:7px;padding:14px 16px;margin-top:14px}
+.customer-avatar{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:#dff5ff;color:#0877bd;font-weight:800}
+.order-so-far{border:1px solid #e2e7ed;border-radius:7px;padding:15px;background:#fbfcfd;height:max-content}.order-so-far small{display:block;color:#667085;text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px}.order-so-far div{padding:9px 0;border-top:1px solid #edf1f4;font-size:14px}.order-so-far div:first-of-type{border-top:0}
+.wizard-actions{grid-column:1/3;display:flex;justify-content:flex-end;gap:10px;border-top:1px solid #edf1f4;padding-top:18px;margin-top:4px}.wizard-actions button{padding:11px 18px;border-radius:6px;border:1px solid #cfd7e2;background:#fff;color:#344054;font-weight:700}.wizard-actions .primary{background:#1295ea;color:#fff;border-color:#1295ea}
+.product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.product-card{border:1px solid #dce2e9;border-radius:8px;padding:12px;background:#fff;min-height:180px;position:relative}.product-card.selected{border:2px solid #1295ea;background:#f5fbff}.product-card img{width:100%;height:95px;object-fit:contain;background:#f6efe0}.product-card b{display:block;margin-top:10px;font-size:15px}.product-card small{color:#667085}.product-check{position:absolute;right:9px;top:9px;width:24px;height:24px;border-radius:50%;background:#1295ea;color:#fff;display:grid;place-items:center;font-weight:800}
+.option-groups{display:grid;grid-template-columns:1fr 1fr;gap:20px 34px}.option-group b{display:block;margin-bottom:9px}.option-pills{display:flex;gap:8px;flex-wrap:wrap}.option-pill{border:1px solid #ccd5df;border-radius:6px;padding:8px 12px;background:#fff;font-size:14px}.option-pill.selected{border-color:#1295ea;background:#eef9ff;color:#0877bd;font-weight:700}.variant-preview{grid-column:1/3;display:grid;grid-template-columns:1fr 170px;gap:18px;border:1px solid #e0e5eb;border-radius:7px;padding:15px;margin-top:4px;background:#fbfcfd}.variant-preview img{width:150px;height:100px;object-fit:contain;background:#f5ead0;border:1px solid #d9c9a4}
+.summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 46px;border:1px solid #e1e6ec;border-radius:7px;padding:12px 20px}.summary-grid div{padding:12px 0;border-bottom:1px solid #edf1f4}.summary-grid span{display:block;color:#667085;font-size:12px;text-transform:uppercase;margin-bottom:4px}.summary-grid b{font-size:16px}
+
+.order-screen-relief{display:grid;grid-template-columns:360px 1fr 300px;height:calc(100% - 60px)}
+.order-screen-relief .orders{display:block}.order-screen-relief .order-main{position:relative}.order-screen-relief .next-action{display:block}
+.portal-flash{animation:portalPulse .32s ease}@keyframes portalPulse{0%{box-shadow:inset 0 0 0 0 rgba(18,149,234,.0)}45%{box-shadow:inset 0 0 0 3px rgba(18,149,234,.22)}100%{box-shadow:inset 0 0 0 0 rgba(18,149,234,0)}}
