@@ -24,51 +24,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Build static site
+      - name: Prepare static site
         run: |
           set -euxo pipefail
-          mkdir -p _site/app
-          cat parts/part*.txt > /tmp/packed.html
-          python3 <<'PY'
-          import base64, gzip, json, pathlib
-
-          packed = pathlib.Path('/tmp/packed.html').read_text(encoding='utf-8')
-          marker = 'const P='
-          start = packed.index(marker) + len(marker)
-          try:
-              end = packed.index(';\nasync function gunzip64', start)
-          except ValueError:
-              end = packed.index(';async function gunzip64', start)
-          payload = json.loads(packed[start:end].strip())
-
-          out = pathlib.Path('_site/app')
-          out.mkdir(parents=True, exist_ok=True)
-          for name, encoded in payload.items():
-              data = gzip.decompress(base64.b64decode(encoded))
-              (out / name).write_bytes(data)
-
-          app_index = '''<!doctype html>
-          <html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Collaborative Order Prototype</title><link rel="stylesheet" href="styles.css"></head><body><div id="boot">Loading Collaborative Order…</div><script>
-          (async()=>{
-            const [tpl,app]=await Promise.all([fetch('template.html').then(r=>{if(!r.ok) throw new Error('template.html: '+r.status); return r.text()}),fetch('app.js').then(r=>{if(!r.ok) throw new Error('app.js: '+r.status); return r.text()})]);
-            document.body.innerHTML=tpl;
-            const s=document.createElement('script'); s.type='text/x-dc'; s.setAttribute('data-dc-script',''); s.setAttribute('data-props',JSON.stringify({startScreen:{editor:'enum',options:['Orders','New order','Version history','Access gate','My orders','Customer order','Mobile'],default:'Orders',tsType:'string',section:'Prototype'},showPrototypeBar:{editor:'boolean',default:true,tsType:'boolean',section:'Prototype'},showInternalNotes:{editor:'boolean',default:true,tsType:'boolean',section:'Prototype'}})); s.textContent=app; document.body.appendChild(s);
-            await new Promise((ok,fail)=>{const d=document.createElement('script');d.src='design-system.js';d.onload=ok;d.onerror=()=>fail(new Error('design-system.js failed'));document.head.appendChild(d)});
-            await new Promise((ok,fail)=>{const r=document.createElement('script');r.src='runtime.js';r.onload=ok;r.onerror=()=>fail(new Error('runtime.js failed'));document.head.appendChild(r)});
-          })().catch(e=>{document.body.innerHTML='<pre style="padding:24px;font:14px monospace;color:#b42318">'+String(e.stack||e)+'</pre>'});
-          </script></body></html>'''
-          (out / 'index.html').write_text(app_index, encoding='utf-8')
-
-          root_index = '''<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Collaborative Order Prototype</title><meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate"></head><body><script>location.replace('./app/?v=' + Date.now())</script><p><a href="./app/">Open Collaborative Order prototype</a></p></body></html>'''
-          pathlib.Path('_site/index.html').write_text(root_index, encoding='utf-8')
-          PY
+          mkdir -p _site/assets
+          cp index.html styles.css app.js _site/
+          cp assets/willow-label-v1.svg assets/willow-label-v2.svg _site/assets/
           touch _site/.nojekyll
-          test -s _site/app/index.html
-          test -s _site/app/template.html
-          test -s _site/app/app.js
-          test -s _site/app/design-system.js
-          test -s _site/app/runtime.js
-          test -s _site/app/styles.css
+          test -s _site/index.html
+          test -s _site/styles.css
+          test -s _site/app.js
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
