@@ -1,0 +1,10 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Collaborative Order Prototype</title><link rel="stylesheet" href="styles.css"></head><body><div id="boot">Loading Collaborative Order…</div><script>
+(async()=>{
+  const [tpl,app]=await Promise.all([fetch('template.html').then(r=>r.text()),fetch('app.js').then(r=>r.text())]);
+  document.body.innerHTML=tpl;
+  const s=document.createElement('script'); s.type='text/x-dc'; s.setAttribute('data-dc-script',''); s.setAttribute('data-props',JSON.stringify({startScreen:{editor:'enum',options:['Orders','New order','Version history','Access gate','My orders','Customer order','Mobile'],default:'Orders',tsType:'string',section:'Prototype'},showPrototypeBar:{editor:'boolean',default:true,tsType:'boolean',section:'Prototype'},showInternalNotes:{editor:'boolean',default:true,tsType:'boolean',section:'Prototype'}})); s.textContent=app; document.body.appendChild(s);
+  await new Promise((ok,fail)=>{const d=document.createElement('script');d.src='design-system.js';d.onload=ok;d.onerror=fail;document.head.appendChild(d)});
+  await new Promise((ok,fail)=>{const r=document.createElement('script');r.src='runtime.js';r.onload=ok;r.onerror=fail;document.head.appendChild(r)});
+})().catch(e=>{document.body.innerHTML='<pre style="padding:24px;font:14px monospace;color:#b42318">'+String(e.stack||e)+'</pre>'});
+</script></body></html>
