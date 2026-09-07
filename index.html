@@ -6,6 +6,7 @@
   <title>Collaborative Order Video</title>
   <link rel="stylesheet" href="styles.css?v=5" />
   <link rel="stylesheet" href="overrides.css?v=6" />
+  <link rel="stylesheet" href="timeline-v7.css?v=7" />
 </head>
 <body>
 <div id="viewport">
@@ -45,8 +46,8 @@
       </section>
 
       <section class="window pdf" id="pdf1">
-        <header class="titlebar"><span class="app-icon pdf-icon">PDF</span><b>Willow_Label_v1.pdf — PDF Viewer</b><span class="window-buttons">— □ ×</span></header>
-        <div class="pdf-body"><img src="assets/willow-label-v1.svg" alt="Willow label v1" /></div>
+        <header class="titlebar"><span class="app-icon pdf-icon">PDF</span><b>Current_Label_Reference.pdf — PDF Viewer</b><span class="window-buttons">— □ ×</span></header>
+        <div class="pdf-body"><img src="assets/willow-label-v1.svg" alt="Willow label reference" /></div>
       </section>
       <section class="window pdf second" id="pdf2">
         <header class="titlebar"><span class="app-icon pdf-icon">PDF</span><b>Willow_Label_FINAL_APPROVED_2.pdf — PDF Viewer</b><span class="window-buttons">— □ ×</span></header>
@@ -73,7 +74,7 @@
     <footer class="taskbar"><span class="start">⊞</span><div class="task-search">⌕&nbsp;&nbsp; Search</div><span id="tbOutlook" class="task-icon outlook-task">O</span><span id="tbTeams" class="task-icon teams-task">T</span><span id="tbExplorer" class="task-icon explorer-task">▰</span><span id="tbPdf" class="task-icon pdf-task">PDF</span><span id="tbBrowser" class="task-icon browser-task">◉</span><div class="tray">⌃ &nbsp; ◔ &nbsp; 🔊 &nbsp; ⌁ <b>10:28 AM<br><small>9/7/2026</small></b></div></footer>
   </div>
 </div>
-<div id="controls"><button id="play" class="primary">▶ Play</button><button id="pause">Ⅱ Pause</button><button id="restart">↻ Restart</button><span id="time">0.0 / 46.0</span><button data-snap="clean">Clean</button><button data-snap="initial">Initial</button><button data-snap="peak">Peak</button><button data-snap="product">Product</button><button id="speed">1×</button></div>
-<script src="app.js?v=6"></script>
+<div id="controls"><button id="play" class="primary">▶ Play</button><button id="pause">Ⅱ Pause</button><button id="restart">↻ Restart</button><input id="scrubber" type="range" min="0" max="6400" value="0" step="1" aria-label="Video timeline" /><span id="time">0.0 / 64.0</span><button data-snap="clean">Clean</button><button data-snap="initial">Initial</button><button data-snap="peak">Peak</button><button data-snap="product">Product</button><button id="speed">1×</button></div>
+<script src="app-v7.js?v=7"></script>
 </body>
 </html>
