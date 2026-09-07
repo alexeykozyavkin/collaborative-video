@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="overrides.css?v=6" />
   <link rel="stylesheet" href="timeline-v7.css?v=7" />
   <link rel="stylesheet" href="timeline-v8.css?v=8" />
+  <link rel="stylesheet" href="timeline-v10.css?v=10" />
 </head>
 <body>
 <div id="viewport">
@@ -17,72 +18,25 @@
       <div class="desktop-icon"><span class="desktop-glyph folder"></span><b>Jobs</b></div>
       <div class="desktop-icon"><span class="desktop-glyph recycle">♻</span><b>Recycle Bin</b></div>
     </div>
-
     <div id="windows">
-      <section class="window outlook" id="outlook">
-        <header class="titlebar"><span class="app-icon outlook-icon">O</span><b>Outlook</b><span class="window-buttons">— □ ×</span></header>
-        <div class="outlook-body">
-          <aside class="mail-nav"><button>＋ New mail</button><b>Inbox <span>12</span></b><span>Drafts&nbsp;&nbsp;3</span><span>Sent</span><span>Archive</span><span>Clients</span><span>Production</span></aside>
-          <div class="mail-list" id="mailList">
-            <div class="mail-item current" data-mail="initial"><b>Emma · Willow &amp; Co.</b><span>New order request</span><small>Roll label · 60 × 40 mm · 5,000 pcs</small></div>
-            <div class="mail-item"><b>Production</b><span>Press schedule — Wednesday</span><small>Two slots still available.</small></div>
-            <div class="mail-item"><b>Northwind Foods</b><span>Re: Carton proof</span><small>Looks good to us.</small></div>
-            <div class="mail-item"><b>Accounts</b><span>PO 11284 received</span><small>Thank you.</small></div>
-          </div>
-          <article class="mail-view" id="mailView"></article>
-        </div>
-      </section>
-
-      <section class="window explorer" id="explorer">
-        <header class="titlebar"><span class="app-icon explorer-icon">▰</span><b>File Explorer — Willow &amp; Co. / Artwork</b><span class="window-buttons">— □ ×</span></header>
-        <div class="explorer-body"><div class="path">Jobs › Willow &amp; Co › Roll label › Artwork</div><div class="file-head"><b>Name</b><b>Date modified</b><b>Size</b></div><div id="fileList"></div></div>
-      </section>
-
-      <section class="window pdf" id="pdf1">
-        <header class="titlebar"><span class="app-icon pdf-icon">PDF</span><b>Current_Label_Reference.pdf — PDF Viewer</b><span class="window-buttons">— □ ×</span></header>
-        <div class="pdf-body"><img src="assets/willow-label-v1.svg" alt="Willow label reference" /></div>
-      </section>
-      <section class="window pdf second" id="pdf2">
-        <header class="titlebar"><span class="app-icon pdf-icon">PDF</span><b>Willow_Label_FINAL_APPROVED_2.pdf — PDF Viewer</b><span class="window-buttons">— □ ×</span></header>
-        <div class="pdf-body"><img src="assets/willow-label-v2.svg" alt="Willow label v2" /></div>
-      </section>
-
-      <section class="window staff-chat designer-chat" id="designerChat">
-        <header class="titlebar"><span class="app-icon teams-icon">T</span><b>Microsoft Teams — Nora · Designer</b><span class="window-buttons">— □ ×</span></header>
-        <div class="staff-chat-body"><div class="staff-chat-head"><span class="person-avatar purple">N</span><div><b>Nora Petrov</b><small>Designer · Available</small></div></div><div class="staff-thread" id="designerThread"></div><div class="staff-chat-input">Message Nora</div></div>
-      </section>
-
-      <section class="window staff-chat prepress-chat" id="prepressChat">
-        <header class="titlebar"><span class="app-icon teams-icon">T</span><b>Microsoft Teams — Leo · Prepress</b><span class="window-buttons">— □ ×</span></header>
-        <div class="staff-chat-body"><div class="staff-chat-head"><span class="person-avatar green">L</span><div><b>Leo Martin</b><small>Prepress · Available</small></div></div><div class="staff-thread" id="prepressThread"></div><div class="staff-chat-input">Message Leo</div></div>
-      </section>
-
-      <section class="window staff-chat director-chat" id="directorChat">
-        <header class="titlebar"><span class="app-icon teams-icon">T</span><b>Microsoft Teams — Ryan · Ops Director</b><span class="window-buttons">— □ ×</span></header>
-        <div class="staff-chat-body"><div class="staff-chat-head"><span class="person-avatar red">R</span><div><b>Ryan Bell</b><small>Ops Director · Available</small></div></div><div class="staff-thread" id="directorThread"></div><div class="staff-chat-input">Message Ryan</div></div>
-      </section>
-
+      <section class="window outlook" id="outlook"><header class="titlebar"><span class="app-icon outlook-icon">O</span><b>Outlook</b><span class="window-buttons">— □ ×</span></header><div class="outlook-body"><aside class="mail-nav"><button>＋ New mail</button><b>Inbox <span>12</span></b><span>Drafts&nbsp;&nbsp;3</span><span>Sent</span><span>Archive</span><span>Clients</span><span>Production</span></aside><div class="mail-list" id="mailList"><div class="mail-item current" data-mail="initial"><b>Emma · Willow &amp; Co.</b><span>New order request</span><small>Roll label · 60 × 40 mm · 5,000 pcs</small></div><div class="mail-item"><b>Production</b><span>Press schedule — Wednesday</span><small>Two slots still available.</small></div><div class="mail-item"><b>Northwind Foods</b><span>Re: Carton proof</span><small>Looks good to us.</small></div><div class="mail-item"><b>Accounts</b><span>PO 11284 received</span><small>Thank you.</small></div></div><article class="mail-view" id="mailView"></article></div></section>
+      <section class="window explorer" id="explorer"><header class="titlebar"><span class="app-icon explorer-icon">▰</span><b>File Explorer — Willow &amp; Co. / Artwork</b><span class="window-buttons">— □ ×</span></header><div class="explorer-body"><div class="path">Jobs › Willow &amp; Co › Roll label › Artwork</div><div class="file-head"><b>Name</b><b>Date modified</b><b>Size</b></div><div id="fileList"></div></div></section>
+      <section class="window pdf" id="pdf1"><header class="titlebar"><span class="app-icon pdf-icon">PDF</span><b>Current_Label_Reference.pdf — PDF Viewer</b><span class="window-buttons">— □ ×</span></header><div class="pdf-body"><img src="assets/willow-label-v1.svg" alt="Willow label reference" /></div></section>
+      <section class="window pdf second" id="pdf2"><header class="titlebar"><span class="app-icon pdf-icon">PDF</span><b>Willow_Label_FINAL_APPROVED_2.pdf — PDF Viewer</b><span class="window-buttons">— □ ×</span></header><div class="pdf-body"><img src="assets/willow-label-v2.svg" alt="Willow label v2" /></div></section>
+      <section class="window staff-chat designer-chat" id="designerChat"><header class="titlebar"><span class="app-icon teams-icon">T</span><b>Microsoft Teams — Nora · Designer</b><span class="window-buttons">— □ ×</span></header><div class="staff-chat-body"><div class="staff-chat-head"><span class="person-avatar purple">N</span><div><b>Nora Petrov</b><small>Designer · Available</small></div></div><div class="staff-thread" id="designerThread"></div><div class="staff-chat-input">Message Nora</div></div></section>
+      <section class="window staff-chat prepress-chat" id="prepressChat"><header class="titlebar"><span class="app-icon teams-icon">T</span><b>Microsoft Teams — Leo · Prepress</b><span class="window-buttons">— □ ×</span></header><div class="staff-chat-body"><div class="staff-chat-head"><span class="person-avatar green">L</span><div><b>Leo Martin</b><small>Prepress · Available</small></div></div><div class="staff-thread" id="prepressThread"></div><div class="staff-chat-input">Message Leo</div></div></section>
+      <section class="window staff-chat director-chat" id="directorChat"><header class="titlebar"><span class="app-icon teams-icon">T</span><b>Microsoft Teams — Ryan · Ops Director</b><span class="window-buttons">— □ ×</span></header><div class="staff-chat-body"><div class="staff-chat-head"><span class="person-avatar red">R</span><div><b>Ryan Bell</b><small>Ops Director · Available</small></div></div><div class="staff-thread" id="directorThread"></div><div class="staff-chat-input">Message Ryan</div></div></section>
       <section class="window qa" id="qa"><header class="titlebar"><span class="app-icon qa-icon">✓</span><b>Preflight Check — ORD-2482</b><span class="window-buttons">— □ ×</span></header><div class="qa-body"><h3>Review items</h3><p class="warn">! &nbsp; Trim size still needs confirmation: <b>60 × 40 mm</b>.</p><p class="ok">✓ &nbsp; CMYK colors and 3 mm bleed are valid.</p><p class="warn">! &nbsp; Latest copy differs from the file marked “approved”.</p></div></section>
       <section class="window production" id="production"><header class="titlebar"><span class="app-icon production-icon">P</span><b>Production board</b><span class="window-buttons">— □ ×</span></header><div class="production-body"><h3>Today’s jobs</h3><div><b>ORD-2482</b><span class="pill waiting">Waiting for final artwork</span><small>Willow roll label</small></div><div><b>ORD-2480</b><span class="pill ready">Released</span><small>Window decal</small></div><aside><b>Production:</b> Need approved artwork before noon.</aside></div></section>
     </div>
-
-    <section id="browser" class="browser-window">
-      <div class="browser-bar"><span>‹ &nbsp; › &nbsp; ↻</span><div class="browser-tab"><i></i>Collaborative Order</div><div class="address">🔒 collaborative-order.local</div></div>
-      <div class="portal">
-        <header class="portal-header"><b><span class="ccmark">[ ]</span> Customer’s Canvas</b><span>Meridian Print &amp; Packaging</span><div class="portal-search">Search orders, customers or SKUs</div><button id="newOrderBtn">＋ New Order</button><b>DW&nbsp; Dana Whitfield</b></header>
-        <div class="portal-layout"></div>
-      </div>
-    </section>
-
+    <section id="browser" class="browser-window"><div class="browser-bar"><span>‹ &nbsp; › &nbsp; ↻</span><div class="browser-tab"><i></i>Collaborative Order</div><div class="address">🔒 collaborative-order.local</div></div><div class="portal"><header class="portal-header"><b><span class="ccmark">[ ]</span> Customer’s Canvas</b><span>Meridian Print &amp; Packaging</span><div class="portal-search">Search orders, customers or SKUs</div><button id="newOrderBtn">＋ New Order</button><b>DW&nbsp; Dana Whitfield</b></header><div class="portal-layout"></div></div></section>
     <div id="toast"><b id="toastTitle"></b><span id="toastBody"></span></div>
     <div id="rewindFilm"><div class="sprocket left"></div><div class="sprocket right"></div><div class="film-lines"></div><div class="scrub"></div><div class="rewind-symbol">◀◀</div></div>
-    <div id="clickRing"></div>
-    <div id="cursor"><svg viewBox="0 0 24 32"><path d="M2 1 L2 25 L8.3 19.4 L12.2 29 L16.3 27.2 L12.3 17.7 L21 17.7 Z" fill="#fff" stroke="#111827" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
-
+    <div id="clickRing"></div><div id="cursor"><svg viewBox="0 0 24 32"><path d="M2 1 L2 25 L8.3 19.4 L12.2 29 L16.3 27.2 L12.3 17.7 L21 17.7 Z" fill="#fff" stroke="#111827" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
     <footer class="taskbar"><span class="start">⊞</span><div class="task-search">⌕&nbsp;&nbsp; Search</div><span id="tbOutlook" class="task-icon outlook-task">O</span><span id="tbTeams" class="task-icon teams-task">T</span><span id="tbExplorer" class="task-icon explorer-task">▰</span><span id="tbPdf" class="task-icon pdf-task">PDF</span><span id="tbBrowser" class="task-icon browser-task">◉</span><div class="tray">⌃ &nbsp; ◔ &nbsp; 🔊 &nbsp; ⌁ <b>10:28 AM<br><small>9/7/2026</small></b></div></footer>
   </div>
 </div>
-<div id="controls"><button id="play" class="primary">▶ Play</button><button id="pause">Ⅱ Pause</button><button id="restart">↻ Restart</button><input id="scrubber" type="range" min="0" max="6800" value="0" step="1" aria-label="Video timeline" /><span id="time">0.0 / 68.0</span><button data-snap="clean">Clean</button><button data-snap="initial">Initial</button><button data-snap="peak">Peak</button><button data-snap="product">Product</button><button id="speed">1×</button></div>
-<script src="app-v8.js?v=8"></script>
+<div id="controls"><button id="play" class="primary">▶ Play</button><button id="pause">Ⅱ Pause</button><button id="restart">↻ Restart</button><input id="scrubber" type="range" min="0" max="8600" value="0" step="1" aria-label="Video timeline" /><span id="time">0.0 / 86.0</span><button data-snap="clean">Clean</button><button data-snap="initial">Initial</button><button data-snap="peak">Peak</button><button data-snap="product">Product</button><button id="speed">1×</button></div>
+<script src="app-v10.js?v=10"></script>
 </body>
 </html>
