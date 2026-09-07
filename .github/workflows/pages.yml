@@ -26,9 +26,17 @@ jobs:
 
       - name: Build static site
         run: |
-          mkdir -p _site
-          cat parts/part*.txt > _site/index.html
+          set -euxo pipefail
+          mkdir -p _site/app _site/parts
+          cat parts/part*.txt > _site/app/index.html
+          cp parts/part*.txt _site/parts/
+          cat > _site/index.html <<'HTML'
+          <!doctype html>
+          <html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Collaborative Order Prototype</title><meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate"><meta http-equiv="pragma" content="no-cache"><meta http-equiv="expires" content="0"></head><body><script>location.replace('./app/?v=' + Date.now())</script><p><a href="./app/">Open Collaborative Order prototype</a></p></body></html>
+          HTML
           touch _site/.nojekyll
+          test -s _site/app/index.html
+          grep -q 'Collaborative Order Prototype' _site/app/index.html
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
