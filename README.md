@@ -1,29 +1,31 @@
 # Collaborative Order — deterministic HTML video prototype
 
-A static, deterministic browser “movie” for the Collaborative Order customer-development demo.
+A static browser “movie” for the Collaborative Order customer-development / exhibition demo.
 
 ## Recording
 
-Open `index.html` in a 16:9 browser viewport (ideally 1920×1080 / fullscreen) and record the browser source in OBS.
+Use a 16:9 browser viewport, ideally 1920×1080 or fullscreen, and record the browser source in OBS.
 
-- `?controls=1` — show the hidden production HUD with timecode, scene name, VO line and seek bar.
-- `?autoplay=0&controls=1` — open paused for inspection.
-- `?start=34&autoplay=0&controls=1` — inspect a specific second of the timeline.
+- `?autoplay=1&controls=0` — clean recording mode.
+- `?start=58&autoplay=0` — inspect a specific second of the timeline.
 - Space — play/pause.
 - `R` — restart.
-- Left/right arrows — seek ±5s.
+- Left/right arrows — seek ±5 seconds.
+- `H` — hide/show controls.
 
-The recording view itself has no marketing captions. Voice-over cues are visible only in the production HUD.
+## Current v7 flow
 
-## Story constraints
+- The old email / Teams / files workflow now starts slowly enough to read the initial request and then escalates into version chaos.
+- The rewind visibly reverses the same story.
+- Cursor position is calculated from the actual target element, with a normal pointer and visible click feedback.
+- The customer hand-off starts with a phone notification. Mobile interactions use touch feedback instead of a mouse cursor.
+- The customer edits `Sourdough Boule` and `No artificial flavors`; the fields and artwork update together before Version 2 is saved.
+- `Create order` is anchored inside its panel instead of drifting outside the layout.
 
-- Two active roles only: Seller / Operator Meridian and Customer.
-- Seller side is desktop; Customer side is mobile.
-- All artwork changes are made by the Customer in the mobile editor.
-- Prepress can appear only in the old-way communication context.
-- No automatic preflight flow is demonstrated.
-- Artwork is raster (`assets/artwork/*.jpg`) rather than HTML-drawn label content.
+## Files
 
-## Current timeline
-
-The current v5 cut is about 78 seconds. The old-way opening has been expanded to ~17 seconds so the setup and escalation remain readable before the rewind.
+- `index.html` — current entry point
+- `v7.js` — deterministic timeline
+- `v7.css` — v7 interaction/layout overrides
+- `v5.css` — shared base styling
+- `assets/willow-label-v1.svg`, `assets/willow-label-v2.svg` — artwork states
