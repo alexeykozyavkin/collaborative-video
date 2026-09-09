@@ -28,16 +28,16 @@ jobs:
         run: |
           set -euxo pipefail
           mkdir -p _site/assets
-          cp index.html v5.css v6.css v6.js _site/
+          cp index.html v5.css v7.css v7.js _site/
           cp assets/willow-label-v1.svg assets/willow-label-v2.svg _site/assets/
           touch _site/.nojekyll
           test -s _site/index.html
           test -s _site/v5.css
-          test -s _site/v6.css
-          test -s _site/v6.js
-          grep -q './v6.css' _site/index.html
-          grep -q './v6.js' _site/index.html
-          grep -q "@import url('./v5.css')" _site/v6.css
+          test -s _site/v7.css
+          test -s _site/v7.js
+          grep -q './v7.css' _site/index.html
+          grep -q './v7.js' _site/index.html
+          grep -q "@import url('./v5.css')" _site/v7.css
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
