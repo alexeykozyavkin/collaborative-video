@@ -1,0 +1,57 @@
+@import url('./v5.css');
+
+/* v7: slower old-way escalation, reliable DOM-targeted clicks, and a real mobile hand-off. */
+.stage{perspective:1800px;perspective-origin:50% 50%;}
+.scene{transform-style:preserve-3d;backface-visibility:hidden;will-change:transform,opacity;transition:none;}
+.scene.flip-from,.scene.flip-to{display:block!important;pointer-events:none!important;}
+html,body,.stage{width:100%;height:100%;}
+
+/* Create Order must stay inside the panel regardless of viewport / content height. */
+.create-panel{position:relative;padding-bottom:78px!important;}
+.create-panel>#createOrderBtn{position:absolute;right:24px;bottom:22px;float:none!important;margin:0!important;min-width:150px;}
+
+/* Newest/active desktop window stays above older windows. */
+.outlook{z-index:12}.teams{z-index:18}.explorer{z-index:22}.pdf{z-index:28}
+
+/* Additional old-way escalation. */
+.production-toast{top:260px;border-left:5px solid #e66000;}
+.toast{will-change:transform,opacity;}
+.click-target{outline:3px solid rgba(22,119,255,.22);outline-offset:1px;transform:translateY(1px);}
+
+/* Normal mouse cursor. Hotspot is the upper-left tip of the SVG path. */
+.cursor{position:absolute;z-index:240;width:30px;height:38px;pointer-events:none;filter:drop-shadow(0 2px 2px #0005);transition:left .32s cubic-bezier(.2,.85,.25,1),top .32s cubic-bezier(.2,.85,.25,1);}
+.cursor-svg{position:absolute;left:0;top:0;width:28px;height:36px;}
+.cursor .click-ring{position:absolute;left:1px;top:1px;width:16px;height:16px;border-radius:50%;border:2px solid rgba(22,119,255,.85);opacity:0;transform:translate(-50%,-50%) scale(.4);}
+.cursor.click .click-ring{animation:mouseClick .42s ease-out;}
+@keyframes mouseClick{0%{opacity:1;transform:translate(-50%,-50%) scale(.45)}100%{opacity:0;transform:translate(-50%,-50%) scale(2.2)}}
+
+/* Mobile uses touch feedback, never the desktop pointer. */
+.touch{position:absolute;z-index:245;width:48px;height:48px;pointer-events:none;transform:translate(-50%,-50%);}
+.touch span{position:absolute;inset:0;border-radius:50%;border:3px solid rgba(22,119,255,.5);background:rgba(255,255,255,.18);box-shadow:0 0 0 8px rgba(22,119,255,.08);}
+.touch.tap span{animation:touchTap .48s ease-out;}
+@keyframes touchTap{0%{opacity:.95;transform:scale(.55)}100%{opacity:0;transform:scale(1.75)}}
+
+/* Phone lock/home state + notification hand-off. */
+.mobile-home{top:42px!important;bottom:18px!important;background:linear-gradient(180deg,#576b83 0%,#263c55 100%)!important;color:#fff;padding:72px 26px;text-align:center;}
+.mobile-home-date{font-size:14px;opacity:.92}.mobile-home-time{font-size:62px;font-weight:300;letter-spacing:-.04em;margin-top:4px}.mobile-home-note{position:absolute;left:0;right:0;bottom:52px;font-size:13px;opacity:.78}
+.mobile-notification{position:absolute;z-index:45;left:23px;right:23px;top:82px;border:0;border-radius:18px;background:rgba(250,251,253,.97);box-shadow:0 10px 30px rgba(10,20,35,.28);padding:14px;display:grid;grid-template-columns:42px 1fr;gap:10px;text-align:left;color:#182230;}
+.mobile-notification.hidden{display:none}.mobile-notification .notification-app{width:42px;height:42px;border-radius:12px;background:#1677ff;color:#fff;display:grid;place-items:center;font-size:18px}.mobile-notification>span:last-child{display:flex;flex-direction:column;gap:2px}.mobile-notification b{font-size:12px}.mobile-notification em{font-style:normal;font-size:13px;line-height:1.25}.mobile-notification small{font-size:11px;color:#778190;margin-top:2px}
+#mobileBrowser.hidden{display:none}
+
+/* Live copy editing: keep artwork as an external asset, mask only editable copy areas. */
+.editor-artwork-wrap{position:relative;width:min(88%,330px);height:auto;display:block;margin:auto;}
+.editor-artwork-wrap>img{display:block;width:100%!important;height:auto!important;max-width:100%!important;object-fit:contain;box-shadow:0 5px 20px #0002;}
+.editor-copy-mask{position:absolute;left:50%;transform:translateX(-50%);background:#d9c49c;color:#233523;text-align:center;display:flex;align-items:center;justify-content:center;padding:2px 8px;overflow:hidden;}
+.editor-product-mask{top:31.5%;width:72%;height:13.5%;font-family:Georgia,serif;font-size:21px;font-weight:700;line-height:1.03;}
+.editor-claim-mask{top:61.5%;width:68%;height:8.5%;font-size:11px;font-weight:600;}
+.editor-copy-mask.updating{box-shadow:0 0 0 4px rgba(22,119,255,.14);transition:box-shadow .18s ease;}
+.editor-sheet input.focused{border-color:#1677ff!important;box-shadow:0 0 0 3px rgba(22,119,255,.12)}
+
+/* Keep editor and order content comfortably inside the phone. */
+.editor-canvas{position:relative;display:grid;place-items:center;}
+
+/* Rewind still reverses the story; cursor remains visible and travels backwards. */
+.rewind{pointer-events:none}.rewind-center{position:relative;z-index:2}
+
+/* Optional production HUD. */
+.dev-controls{transition:opacity .2s ease}.dev-controls.hidden{display:none!important}
