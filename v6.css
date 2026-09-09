@@ -1,0 +1,17 @@
+@import url('./v5.css');
+
+/* v6: keep the proven v5 layout, add deterministic seller/customer 3D flip transitions */
+.stage{perspective:1800px;perspective-origin:50% 50%;}
+.scene{transform-style:preserve-3d;backface-visibility:hidden;will-change:transform,opacity;transition:none;}
+.customer-scene{background:linear-gradient(140deg,#f3f5f7,#e5ebf0);}
+.customer-caption{font-weight:700;letter-spacing:.01em;}
+
+/* Slightly calmer opening: first email remains readable longer before windows stack up. */
+.outlook{transition:transform .28s ease,opacity .28s ease;}
+.toast,.window{will-change:transform,opacity;}
+
+/* Flip motion is driven continuously from JS so scrubbing/recording stays deterministic. */
+.scene.flip-from,.scene.flip-to{display:block!important;pointer-events:none!important;}
+
+/* Recording helper: H hides controls; in 16:9 the stage always fills the viewport. */
+html,body,.stage{width:100%;height:100%;}
