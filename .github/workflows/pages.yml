@@ -28,16 +28,25 @@ jobs:
         run: |
           set -euxo pipefail
           mkdir -p _site/assets
-          cp index.html v5.css v7.css v7.js _site/
-          cp assets/willow-label-v1.svg assets/willow-label-v2.svg _site/assets/
+          cp v5.css v7.css v8.css v8.js v8-wizard.js _site/
+          cp assets/willow-label-v1.svg assets/willow-label-v2.svg assets/willow-label-v2-exact.svg _site/assets/
+          sed \
+            -e 's#./v7.css#./v8.css#' \
+            -e 's#Video Prototype v7#Video Prototype v8#' \
+            -e 's#<script src="./v7.js"></script>#<script src="./v8-wizard.js"></script><script src="./v8.js"></script>#' \
+            index.html > _site/index.html
           touch _site/.nojekyll
           test -s _site/index.html
           test -s _site/v5.css
           test -s _site/v7.css
-          test -s _site/v7.js
-          grep -q './v7.css' _site/index.html
-          grep -q './v7.js' _site/index.html
-          grep -q "@import url('./v5.css')" _site/v7.css
+          test -s _site/v8.css
+          test -s _site/v8.js
+          test -s _site/v8-wizard.js
+          test -s _site/assets/willow-label-v2-exact.svg
+          grep -q './v8.css' _site/index.html
+          grep -q './v8-wizard.js' _site/index.html
+          grep -q './v8.js' _site/index.html
+          grep -q "@import url('./v7.css')" _site/v8.css
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
