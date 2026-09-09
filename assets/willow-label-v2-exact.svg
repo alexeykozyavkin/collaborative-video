@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#f1e5c8"/>
+  <rect x="58" y="52" width="1084" height="696" rx="20" fill="none" stroke="#b9a679" stroke-width="4"/>
+  <rect x="82" y="76" width="1036" height="648" rx="14" fill="none" stroke="#cdbd96" stroke-width="2"/>
+  <g fill="#24364a" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif">
+    <text x="600" y="180" font-size="78" font-weight="800">WILLOW &amp; CO.</text>
+    <text x="600" y="245" font-size="30" font-weight="700" letter-spacing="6">ARTISAN BAKERY</text>
+    <text x="600" y="320" font-size="30">❧ · ❧</text>
+    <text x="600" y="430" font-size="64" font-weight="800">SOURDOUGH</text>
+    <text x="600" y="500" font-size="64" font-weight="800">BOULE</text>
+    <line x1="260" y1="540" x2="940" y2="540" stroke="#24364a" stroke-width="3"/>
+    <text x="600" y="595" font-size="28">Slow fermented for flavour</text>
+  </g>
+  <rect x="220" y="660" width="760" height="62" rx="10" fill="#24364a"/>
+  <text x="600" y="701" text-anchor="middle" fill="#fff" font-family="Segoe UI,Arial,sans-serif" font-size="26" font-weight="800" letter-spacing="2">NO ARTIFICIAL FLAVORS</text>
+</svg>
