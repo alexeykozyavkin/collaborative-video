@@ -1,0 +1,42 @@
+@import url('./v7.css');
+
+/* v8 — restores the developer wizard flow and the product's orange CTA language. */
+:root{--cc-orange:#e66000;--cc-orange-dark:#c84f00;--cc-orange-soft:rgba(230,96,0,.09);--cc-orange-line:rgba(230,96,0,.32)}
+
+/* Primary actions in the source prototype are orange. Status/navigation may stay blue. */
+.primary,.save,#saveBtn{background:var(--cc-orange)!important;color:#fff!important;border-color:var(--cc-orange)!important}
+.primary:hover,.save:hover,#saveBtn:hover{background:var(--cc-orange-dark)!important}
+.click-target{outline-color:rgba(230,96,0,.28)!important}
+.cursor .click-ring{border-color:rgba(230,96,0,.9)!important}
+.touch span{border-color:rgba(230,96,0,.55)!important;box-shadow:0 0 0 8px rgba(230,96,0,.1)!important}
+
+/* Never leave stale pointer feedback on another scene. */
+.cursor.hidden,.touch.hidden{display:none!important}
+
+/* Create wizard — compact reconstruction of the four real screens in the developer HTML. */
+.create-panel.wizard-panel{padding:0!important;overflow:hidden;position:relative;min-height:660px}
+.create-panel.wizard-panel>#createOrderBtn{position:static!important;float:none!important;margin:0!important}
+.wizard-steps{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid #e5e7eb;background:#f5f5f5}
+.wizard-step{min-width:0;padding:14px 16px;display:flex;align-items:center;gap:10px;border-bottom:3px solid transparent;color:#8f8f8f;background:#f5f5f5}
+.wizard-step>span{width:26px;height:26px;border-radius:3px;background:#dfe2e6;color:#8f8f8f;display:grid;place-items:center;font-size:12px;font-weight:700;flex:none}
+.wizard-step>div{display:flex;flex-direction:column;min-width:0}.wizard-step b{font-size:14px}.wizard-step small{font-size:11px;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.wizard-step.active{background:#fff;border-bottom-color:#0171b2;color:#141414}.wizard-step.active>span{background:#0171b2;color:#fff}.wizard-step.done{color:#525252}.wizard-step.done>span{background:#0171b2;color:#fff}.wizard-step.done small{color:#525252}
+.wizard-screen{position:relative;min-height:596px;padding:22px 24px 76px;display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:30px;align-items:start;background:#fff}
+.wizard-screen.hidden{display:none!important}.wizard-screen h3{font-size:18px;margin:0 0 14px;font-weight:650}.wizard-sub{margin:-8px 0 16px;color:#667085;font-size:13px}
+.wizard-maincol{min-width:0}.wizard-label{display:flex;flex-direction:column;gap:7px;font-size:12px;color:#667085}.wizard-label input{height:42px;border:1px solid #ccd3dc;border-radius:5px;padding:0 12px;background:#fff;color:#182230;font-size:14px;outline:none}
+.customer-pick{position:relative;margin-top:16px;border:1px solid #e1e5ea;border-radius:5px;padding:13px 14px;display:flex;align-items:center;gap:12px;background:#fff}.customer-pick.selected{background:#f3f8fd;border-color:#b7d4ef}.customer-pick>div{display:flex;flex-direction:column;gap:2px}.customer-pick small{color:#667085;font-size:12px}.customer-avatar{width:34px;height:34px;border-radius:3px;background:#d9ebf8;color:#0d5b92;display:grid;place-items:center;font-weight:700;font-size:12px}.selected-check{margin-left:auto;width:22px;height:22px;border-radius:50%;background:#0171b2;color:#fff;display:grid;place-items:center;font-size:12px}
+.order-so-far{background:#f5f5f5;border:1px solid #dfe2e6;border-radius:5px;padding:16px;display:flex;flex-direction:column;gap:12px;min-height:130px}.order-so-far>b{font-size:11px;color:#8f8f8f;letter-spacing:.05em}.order-so-far>div{padding-bottom:10px;border-bottom:1px solid #dfe2e6;display:flex;flex-direction:column;gap:3px}.order-so-far small{font-size:11px;color:#8f8f8f}.order-so-far strong{font-size:13px;font-weight:600;line-height:1.35}
+.wizard-footer{position:absolute;left:24px;right:24px;bottom:0;min-height:66px;border-top:1px solid #e5e7eb;display:flex;align-items:center;gap:16px;background:#fff}.wizard-footer>span{font-size:12px;color:#667085;max-width:65%}.wizard-footer .primary{margin-left:auto;min-width:176px;height:38px;padding:0 16px;border-radius:5px;white-space:nowrap}
+.wizard-title-row{display:flex;align-items:center;gap:14px;margin-bottom:14px}.wizard-title-row h3{margin:0}.catalog-search{margin-left:auto;width:260px;height:38px;border:1px solid #ccd3dc;border-radius:5px;display:flex;align-items:center;gap:8px;padding:0 11px;color:#8f8f8f;font-size:13px}
+.product-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.product-card{position:relative;border:1px solid #dfe2e6;border-radius:5px;padding:11px;display:flex;flex-direction:column;gap:6px;min-height:150px}.product-card.selected{border-color:#0171b2;background:#f3f8fd}.product-card b{font-size:13px}.product-card small{font-size:11px;color:#8f8f8f}.product-card .selected-check{position:absolute;right:9px;top:9px}.product-thumb{height:91px;border:1px solid #e0e4e8;border-radius:3px;background:#fff;display:grid;place-items:center;font-size:27px;color:#a0a7b0;overflow:hidden}.product-thumb img{width:100%;height:100%;object-fit:contain;padding:7px}
+.option-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 24px}.option-group{display:flex;flex-direction:column;gap:7px}.option-group>small{font-size:12px;color:#667085}.option-group>div{display:flex;flex-wrap:wrap;gap:6px}.choice{height:33px;padding:0 11px;border:1px solid #cfd5dd;border-radius:5px;background:#fff;color:#3d3d3d;font-size:12px}.choice.selected{background:#eef6fc;border-color:#0171b2;color:#015e97;font-weight:600}.choice.disabled{background:#f5f5f5;color:#c2c5c9;border-color:#e1e3e6}.variant-card{margin-top:17px;padding:12px 14px;border:1px solid #dfe2e6;border-radius:5px;background:#f7f7f7;display:grid;grid-template-columns:1fr 100px;gap:15px;align-items:center}.variant-card>div{display:flex;flex-direction:column;gap:4px}.variant-card small{font-size:10px;color:#8f8f8f;letter-spacing:.04em}.variant-card b{font-size:12px;line-height:1.35}.variant-card code{font-size:11px;color:#667085}.variant-card img{width:100%;height:70px;object-fit:contain;background:#fff;border:1px solid #e0e3e7}.quantity-row{margin-top:14px;border:1px solid #e0e3e7;border-radius:5px;padding:11px 13px;display:flex;align-items:center;gap:7px}.quantity-row b{font-size:12px;margin-right:6px}
+.summary-layout{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:30px}.summary-list{min-width:0}.summary-row{display:grid;grid-template-columns:155px 1fr;gap:16px;padding:10px 0;border-bottom:1px solid #eceff2}.summary-row small{font-size:11px;color:#8f8f8f;text-transform:uppercase;letter-spacing:.03em}.summary-row b{font-size:13px;line-height:1.4}.summary-art{border:1px solid #dfe2e6;border-radius:5px;padding:14px;display:flex;flex-direction:column;gap:8px;align-self:start}.summary-art small{font-size:10px;color:#8f8f8f;letter-spacing:.05em}.summary-art img{width:100%;height:190px;object-fit:contain;background:#f7f7f7}.summary-art b{font-size:12px}
+
+/* The precise saved design is shared everywhere after Emma saves Version 2. */
+#sellerArtwork,#mobileArtwork,#editorArtwork{object-fit:contain}
+
+/* Keep the seller layout from clipping the right-hand wizard content at common recording sizes. */
+.app-shell,.app-main{min-width:0}.app-main{overflow:hidden}.wizard-panel{max-width:100%}
+
+/* Mobile touch pulse is orange and can only render during the customer scene. */
+.customer-scene:not(.active)~.touch{display:none!important}
