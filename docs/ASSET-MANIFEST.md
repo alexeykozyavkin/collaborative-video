@@ -9,7 +9,15 @@
 
 ## Final browser-demo source
 
-These files make up the final recorded runtime:
+The ready-to-run local entrypoint is:
+
+```text
+final.html
+```
+
+It loads the final v8 runtime directly and includes the local product-preview fallback.
+
+The underlying final runtime files are:
 
 ```text
 index.html
@@ -25,7 +33,7 @@ v8-interactions.js
 
 The raw historical `index.html` is intentionally preserved because it is also the source used by the GitHub Pages deployment workflow. GitHub Pages transforms its v7 references into the final v8 stack at deploy time.
 
-For local playback, use `tools/run-local.ps1` or `tools/run-local.sh`; they build `.local-index.html` with the final v8 entrypoint without modifying the archived source file.
+For ordinary local playback, open `final.html`. The helper scripts `tools/run-local.ps1` and `tools/run-local.sh` are also preserved to reproduce the deployment-style transformation from `index.html` into `.local-index.html`.
 
 ## Artwork used by the scenario
 
