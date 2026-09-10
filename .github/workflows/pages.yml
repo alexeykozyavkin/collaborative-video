@@ -33,7 +33,7 @@ jobs:
         run: |
           set -euxo pipefail
           mkdir -p _site/assets/products
-          cp v5.css v7.css v8.css v8.js v8-wizard.js v8-polish.js v8-editor.js _site/
+          cp v5.css v7.css v8.css v8.js v8-wizard.js v8-polish.js v8-editor.js v8-interactions.js _site/
           cp assets/willow-label-v1.svg assets/willow-label-v2.svg assets/willow-label-v2-exact.svg _site/assets/
 
           for src in assets/product-previews-src/*.svg; do
@@ -44,7 +44,7 @@ jobs:
           sed \
             -e 's#./v7.css#./v8.css#' \
             -e 's#Video Prototype v7#Video Prototype v8#' \
-            -e 's#<script src="./v7.js"></script>#<script src="./v8-wizard.js"></script><script src="./v8.js"></script><script src="./v8-polish.js"></script><script src="./v8-editor.js"></script>#' \
+            -e 's#<script src="./v7.js"></script>#<script src="./v8-wizard.js"></script><script src="./v8.js"></script><script src="./v8-polish.js"></script><script src="./v8-editor.js"></script><script src="./v8-interactions.js"></script>#' \
             index.html > _site/index.html
 
           touch _site/.nojekyll
@@ -56,6 +56,7 @@ jobs:
           test -s _site/v8-wizard.js
           test -s _site/v8-polish.js
           test -s _site/v8-editor.js
+          test -s _site/v8-interactions.js
           test -s _site/assets/willow-label-v2-exact.svg
           test -s _site/assets/products/roll-label.png
           test -s _site/assets/products/wraparound-label.png
@@ -68,6 +69,7 @@ jobs:
           grep -q './v8.js' _site/index.html
           grep -q './v8-polish.js' _site/index.html
           grep -q './v8-editor.js' _site/index.html
+          grep -q './v8-interactions.js' _site/index.html
           grep -q "@import url('./v7.css')" _site/v8.css
 
       - name: Configure Pages
