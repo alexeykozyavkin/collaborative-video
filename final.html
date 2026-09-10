@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Collaborative Order — Archived Final v8</title>
+  <link rel="stylesheet" href="./v8.css" />
+</head>
+<body>
+  <main id="stage" class="stage" aria-label="Collaborative Order video prototype">
+    <section id="desktop" class="scene desktop-scene active">
+      <div class="desktop-wallpaper"></div>
+      <div class="taskbar">
+        <div class="start">⊞</div><div class="task-icon">✉</div><div class="task-icon">T</div><div class="task-icon">📁</div>
+        <div class="task-clock"><span id="clock">10:14 AM</span><small>6/8/2026</small></div>
+      </div>
+      <div class="desktop-title">Meridian Print Services</div>
+
+      <div id="outlook" class="window outlook hidden">
+        <div class="winbar"><strong>Outlook</strong><span>— □ ×</span></div>
+        <div class="mail-shell">
+          <aside class="mail-list">
+            <div id="initialMail" class="mail-item selected"><b>Emma Cole</b><span>New order request — Roll label 60 × 40 mm</span></div>
+            <div class="mail-item"><b>Accounts</b><span>June statement</span></div>
+            <div class="mail-item"><b>Production</b><span>Schedule update</span></div>
+          </aside>
+          <article class="mail-body">
+            <div class="mail-head"><b>New order request — Roll label 60 × 40 mm</b><span>Emma Cole · Willow & Co.</span></div>
+            <p>Hi Dana,</p><p>We need <b>5,000 roll labels</b> for our sourdough bread line.</p>
+            <div class="specs"><span>Size</span><b>60 × 40 mm</b><span>Due</span><b>Jun 18</b><span>Stock</span><b>Kraft / uncoated</b></div>
+            <div class="attachments"><div>📄 Willow_Brief.pdf</div><div id="initialArtworkAttachment">📄 Willow_Label_v1.pdf</div><div>🖼 Willow_Logo.png</div></div>
+            <p>There may be a couple of text updates before approval.</p><p>Thanks,<br>Emma</p>
+          </article>
+        </div>
+      </div>
+
+      <div id="teams" class="window teams hidden"><div class="winbar purple"><strong>Microsoft Teams</strong><span>— □ ×</span></div><div class="teams-body"><aside><b>Meridian / Orders</b><span># willow-co</span><span># production</span><span># prepress</span></aside><section class="chat"><h3>Willow & Co. · ORD-2482</h3><div class="msg dana"><b>Dana</b><p>New roll-label order. 5,000 pcs, 60 × 40 mm. Initial artwork attached.</p></div><div class="msg nora m2"><b>Nora</b><p>I’ll save the next revision once Emma confirms the copy.</p></div><div class="msg leo m3"><b>Leo · Prepress</b><p>Please confirm the final trim size before I release it.</p></div></section></div></div>
+
+      <div id="explorer" class="window explorer hidden"><div class="winbar"><strong>File Explorer — Willow & Co.</strong><span>— □ ×</span></div><div class="explorer-body"><div id="fileV1" class="folder-row"><span>📄</span><b>Willow_Label_v1.pdf</b><small>10:03 AM</small></div><div class="folder-row v2"><span>📄</span><b>Willow_Label_v2.pdf</b><small>10:08 AM</small></div><div class="folder-row v3"><span>📄</span><b>Willow_Label_v3.pdf</b><small>10:11 AM</small></div><div class="folder-row final"><span>📄</span><b>Willow_Label_FINAL.pdf</b><small>10:13 AM</small></div><div class="folder-row approved"><span>📄</span><b>Willow_Label_APPROVED.pdf</b><small>10:14 AM</small></div><div class="folder-row approved2"><span>📄</span><b>Willow_Label_APPROVED_2.pdf</b><small>10:14 AM</small></div></div></div>
+
+      <div id="pdf" class="window pdf hidden"><div class="winbar red"><strong id="pdfTitle">Willow_Label_v1.pdf</strong><span>— □ ×</span></div><div class="pdf-body"><img id="pdfArtwork" src="./assets/willow-label-v1.svg" alt="Willow & Co. label artwork"/></div></div>
+
+      <div id="reply1" class="toast mail-toast hidden"><b>Emma Cole</b><span>Can we change the product name to “Sourdough Boule”?</span></div>
+      <div id="reply2" class="toast mail-toast hidden"><b>Emma Cole</b><span>Please use “No artificial flavors”.</span></div>
+      <div id="reply3" class="toast mail-toast danger hidden"><b>Emma Cole</b><span>Which version should I approve?</span></div>
+      <div id="prepressToast" class="toast teams-toast hidden"><b>Leo · Prepress</b><span>Latest copy differs from the file marked APPROVED. Please confirm the 60 × 40 mm trim size.</span></div>
+      <div id="productionToast" class="toast production-toast hidden"><b>Maya · Production</b><span>Production is waiting. Can we release ORD-2482 today?</span></div>
+    </section>
+
+    <section id="seller" class="scene seller-scene">
+      <div class="browser chrome-frame">
+        <div class="chrome-top"><div class="tabs"><span class="tab active">Collaborative Order</span></div><div class="address">https://portal.meridianprint.com/collaborative-orders/ORD-2482</div></div>
+        <div class="app-shell">
+          <aside class="app-nav"><div class="brand-mark">M</div><b>Meridian</b><nav><span class="active">Orders</span><span>Customers</span><span>Products</span></nav></aside>
+          <main class="app-main">
+            <header class="app-header"><div><small>Collaborative Order</small><h1 id="sellerTitle">New Order</h1></div><div class="avatar">DK</div></header>
+            <div id="sellerCreate" class="panel create-panel">
+              <div class="steps"><span class="done">1 Customer</span><span class="done">2 Product</span><span class="active">3 Options</span><span>4 Summary</span></div>
+              <div class="form-grid"><label>Customer<input value="Willow & Co." readonly></label><label>Contact<input value="Emma Cole" readonly></label><label>Product<input value="Roll label" readonly></label><label>Size<input value="60 × 40 mm" readonly></label><label>Quantity<input value="5,000" readonly></label><label>Stock<input value="Kraft / uncoated" readonly></label></div>
+              <div class="create-art"><div><b>Initial artwork</b><span>Willow_Label_v1.pdf</span></div><img src="./assets/willow-label-v1.svg" alt="Initial artwork"/></div>
+              <button id="createOrderBtn" class="primary">Create order</button>
+            </div>
+            <div id="sellerOrder" class="panel order-panel hidden">
+              <div class="order-top"><div><span id="orderStatus" class="pill blue">In review</span><h2>Roll label · 60 × 40 mm</h2><p>Willow & Co. · 5,000 pcs · Due Jun 18</p></div><button id="inviteBtn" class="primary">Invite customer</button></div>
+              <div class="order-grid"><section class="art-card"><div class="card-head"><b>Current design</b><span id="versionTag">Version 1</span></div><img id="sellerArtwork" src="./assets/willow-label-v1.svg" alt="Current design"><div class="art-actions"><button>Open in Editor</button><button>View history</button></div></section><section class="conversation"><div class="card-head"><b>Conversation</b><span>ORD-2482</span></div><div class="thread"><div class="bubble seller"><b>Dana</b><p>Hi Emma, I’ve added the order and the initial design. You can review and make permitted changes from the link.</p></div><div id="customerSaved" class="bubble customer hidden"><b>Emma</b><p>I updated the copy and saved Version 2.</p></div></div></section></div>
+              <div class="history-strip"><div><b>Order activity</b></div><div class="history-item"><span>10:23</span><b>Version 1 published</b></div><div id="histV2" class="history-item hidden"><span>10:41</span><b>Version 2 published by Emma Cole</b></div><div id="histConfirmed" class="history-item hidden"><span>10:48</span><b>Customer confirmed Version 2</b></div></div>
+              <div id="employeeConfirm" class="confirm-banner hidden"><div><b>Customer confirmation received</b><span>Review the current Version 2 before this goes to print.</span></div><button id="employeeConfirmBtn" class="primary">Confirm before this goes to print</button></div>
+              <div id="pipelineState" class="pipeline hidden"><span class="spinner"></span><div><b>Preparing print files</b><span>Generating production-ready output…</span></div></div>
+              <div id="readyState" class="ready hidden"><span class="check">✓</span><div><b>Print files ready</b><span>ORD-2482 is ready for production.</span></div></div>
+            </div>
+          </main>
+        </div>
+      </div>
+    </section>
+
+    <section id="customer" class="scene customer-scene">
+      <div class="flip-bg"></div>
+      <div class="phone-wrap"><div class="phone">
+        <div class="phone-top"><span>10:34</span><span>▮▮▮ 5G ◉</span></div>
+        <div id="mobileBrowser" class="mobile-browser hidden"><span>‹</span><b>portal.meridianprint.com</b><span>⋯</span></div>
+
+        <div id="mobileHome" class="mobile-screen mobile-home">
+          <div class="mobile-home-date">Wednesday, June 8</div><div class="mobile-home-time">10:34</div><div class="mobile-home-note">1 new order update</div>
+        </div>
+        <button id="mobileNotification" class="mobile-notification hidden"><span class="notification-app">✉</span><span><b>Meridian Print Services</b><em>Your roll label order is ready for review</em><small>Tap to open ORD-2482</small></span></button>
+
+        <div id="mobileOrder" class="mobile-screen hidden">
+          <div class="mobile-brand"><div class="brand-mark small">M</div><b>Meridian</b></div>
+          <div class="mobile-content"><span class="pill blue">Your review</span><h2>Roll label</h2><p class="muted">Willow & Co. · ORD-2482</p><div class="mobile-art"><img id="mobileArtwork" src="./assets/willow-label-v1.svg" alt="Willow label"></div><div class="mobile-specs"><div><span>Size</span><b>60 × 40 mm</b></div><div><span>Quantity</span><b>5,000</b></div><div><span>Due</span><b>Jun 18</b></div></div><button id="editBtn" class="primary wide">Open in Editor</button><button id="confirmBtn" class="secondary wide hidden">Confirm order</button><div id="mobileVersion" class="version-note">Current design · Version 1</div></div>
+        </div>
+
+        <div id="mobileEditor" class="mobile-screen editor hidden">
+          <div class="editor-head"><button id="backOrder">‹</button><div><b>Roll label</b><span>Editor</span></div><button id="saveBtn" class="save">Save</button></div>
+          <div class="editor-canvas">
+            <div class="editor-artwork-wrap">
+              <img id="editorArtwork" src="./assets/willow-label-v1.svg" alt="Artwork in editor">
+              <div class="editor-copy-mask editor-product-mask"><span id="editorProductLive">Organic Sourdough</span></div>
+              <div class="editor-copy-mask editor-claim-mask"><span id="editorClaimLive">Made with simple ingredients</span></div>
+            </div>
+            <div id="editSelection" class="selection hidden"><span></span><span></span><span></span><span></span></div>
+          </div>
+          <div class="editor-sheet"><div class="field"><label>Product name</label><input id="copyField" value="Organic Sourdough" readonly></div><div class="field"><label>Claim</label><input id="claimField" value="Made with simple ingredients" readonly></div><div class="editor-tools"><span>Text</span><span>Images</span><span>Colors</span></div></div>
+        </div>
+
+        <div id="mobileConfirmed" class="mobile-screen confirmed hidden"><div class="success-icon">✓</div><h2>Order confirmed</h2><p>Your confirmation has been sent to Meridian.</p><div class="mini-order"><img src="./assets/willow-label-v2.svg"><div><b>Roll label</b><span>Version 2</span></div></div></div>
+        <div class="home-indicator"></div>
+      </div></div>
+      <div class="customer-caption">Customer · Emma Cole</div>
+    </section>
+
+    <section id="packshot" class="scene packshot-scene"><div class="packshot-card"><div class="pack-logo">M</div><h1>Collaborative Order</h1><p>One order. One shared workspace.</p><div class="pack-flow"><span>Create</span><i>→</i><span>Customize</span><i>→</i><span>Confirm</span><i>→</i><span>Produce</span></div></div></section>
+
+    <div id="rewind" class="rewind hidden"><div class="film-edge top"></div><div class="rewind-center"><div class="chevrons">◀◀</div><b>REWIND</b><div class="scrub"><span></span></div></div><div class="film-edge bottom"></div></div>
+    <div id="cursor" class="cursor hidden"><svg class="cursor-svg" viewBox="0 0 28 36" aria-hidden="true"><path d="M2 2 L2 29 L9.8 21.6 L15.6 34 L20.1 31.8 L14.4 19.8 L25.3 19.8 Z" fill="#fff" stroke="#111" stroke-width="2" stroke-linejoin="round"/></svg><div class="click-ring"></div></div>
+    <div id="touch" class="touch hidden"><span></span></div>
+
+    <div id="devControls" class="dev-controls"><button id="playBtn">▶ Play</button><button id="restartBtn">↻ Restart</button><button id="pauseBtn">Ⅱ Pause</button><span id="timeReadout">0:00.0 / 1:38.0</span><input id="scrubber" type="range" min="0" max="98" step="0.1" value="0"><small>Space: play/pause · R: restart · H: controls</small></div>
+  </main>
+  <script src="./v8-wizard.js"></script>
+  <script src="./v8.js"></script>
+  <script src="./v8-polish.js"></script>
+  <script src="./v8-editor.js"></script>
+  <script src="./v8-interactions.js"></script>
+  <script src="./tools/local-preview-fallback.js"></script>
+</body>
+</html>
