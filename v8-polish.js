@@ -110,7 +110,7 @@
     const img=document.createElement('img');
     img.alt=card.querySelector('b')?.textContent||'Product preview';
     img.src=preview(kinds[i]);
-    img.style.cssText='width:100%;height:100%;object-fit:cover;padding:0;display:block;background:#fff';
+    img.style.cssText='width:100%;height:100%;object-fit:contain;padding:6px;display:block;background:#fff';
     thumb.replaceChildren(img);
   });
 
