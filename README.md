@@ -11,6 +11,7 @@ This branch is a preservation snapshot of the final **Collaborative Order** prod
 
 The branch preserves the final browser demo and the context needed to understand or continue it later:
 
+- `final.html` — ready-to-run final local entrypoint;
 - the final HTML/CSS/JavaScript source and artwork assets;
 - the exact 98-second timeline used for the recorded demo;
 - the restored **Action** control for recording;
@@ -18,12 +19,21 @@ The branch preserves the final browser demo and the context needed to understand
 - project goals, narrative and technical context in `docs/PROJECT.md` and `docs/CONTEXT.md`;
 - the final voice-over source text and ElevenLabs setup in `docs/VOICEOVER-FINAL.md`;
 - reusable prompts for future AI-assisted work in `docs/PROMPTS.md`;
+- a final-file inventory in `docs/ASSET-MANIFEST.md`;
 - local-run helpers in `tools/`;
 - a `media/` folder reserved for the mastered video and audio exports.
 
 ## Run locally
 
-The deployed GitHub Pages version is assembled from several source files by the Pages workflow. For a local reproduction, use one of the helper scripts:
+The simplest option is to open:
+
+```text
+final.html
+```
+
+It loads the final v8 runtime directly and uses local SVG product previews, so no GitHub Pages build is required.
+
+The historical/deployment `index.html` is also preserved. If you specifically want to reproduce the GitHub Pages transformation from that source, use one of the helper scripts:
 
 ### Windows
 
@@ -37,9 +47,7 @@ powershell -ExecutionPolicy Bypass -File .\tools\run-local.ps1
 bash ./tools/run-local.sh
 ```
 
-The helper builds `.local-index.html` with the same v8 script stack used by the final deployed demo and opens it in the default browser. Product-preview PNGs created by GitHub Actions are replaced locally with their source SVG equivalents, so no build dependencies are required.
-
-The demo can also be served with any static HTTP server after generating `.local-index.html`.
+Those helpers generate `.local-index.html` with the same v8 script stack used by the final deployed demo.
 
 ## Recording controls
 
