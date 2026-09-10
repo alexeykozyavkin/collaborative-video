@@ -40,3 +40,12 @@
 
 /* Mobile touch pulse is orange and can only render during the customer scene. */
 .customer-scene:not(.active)~.touch{display:none!important}
+
+/* Keep the 16:9 stage centered in fullscreen and other exact-ratio viewports.
+   The inherited v5 rules can both match at exactly 16:9, so reset the opposite axis explicitly. */
+@media (max-aspect-ratio:16/9){
+  .stage{width:177.777vh;height:100vh;left:50%;top:0;transform:translateX(-50%)}
+}
+@media (min-aspect-ratio:16/9){
+  .stage{width:100vw;height:56.25vw;left:0;top:50%;transform:translateY(-50%)}
+}
