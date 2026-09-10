@@ -117,4 +117,9 @@
   document.querySelector('#packshot .pack-logo')?.remove();
   const pack=document.querySelector('#packshot .packshot-card');
   if(pack)pack.style.paddingTop='56px';
+
+  ['#reply1','#reply2','#reply3'].forEach(sel=>{
+    const author=document.querySelector(`${sel} b`);
+    if(author)author.textContent='Emma Cole · Client';
+  });
 })();
